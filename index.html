@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .diagram {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .element {
+            box-sizing: border-box;
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 50%;
+            border: 1px solid #ffffff;
+            background-color: #6badf1;
+            padding: 8px;
+            color: black;
+            overflow-wrap: break-word;
+            overflow: hidden;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="diagram" class="diagram"></div>
+    <script>
+        function drawViz(data) {
+            const diagram = document.getElementById('diagram');
+            diagram.innerHTML = '';
+
+            data.forEach(function(row) {
+                const div = document.createElement('div');
+                div.className = 'element';
+                div.textContent = row;
+                diagram.appendChild(div);
+            });
+        }
+
+        const sampleData = [
+            "Pani była bardzo uprzejma i profesjonalna przy obsłudze zamówienia.",
+            "Cena za zamówioną książkę z odbiorem własnym była niższa.",
+            "Doświadczenie i szybkość obsługi były bez zarzutu.",
+            "Coś nie działa w płatności elektronicznej przez dwa dni.",
+            "Bardzo szybkie i profesjonalne podejście do klienta."
+        ];
+
+        drawViz(sampleData);
+
+        window.addEventListener('resize', function(){
+          drawViz(sampleData);
+        });
+    </script>
+</body>
+</html>
